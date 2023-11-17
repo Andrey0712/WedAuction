@@ -1,5 +1,4 @@
-using Data;
-using Data.Entities.Identity;
+
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -12,6 +11,8 @@ using Newtonsoft.Json;
 using System.Reflection;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Data;
+using Data.Entities.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
