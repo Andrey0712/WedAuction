@@ -72,14 +72,14 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ClockSkew = TimeSpan.Zero
     };
-});
+});*/
 
 builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Program>());
 
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAuction", Version = "v1" });
-    c.AddSecurityDefinition("Bearer",
+    /*c.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {
             Description = "JWT Authorization header using the Bearer scheme.",
@@ -98,7 +98,7 @@ builder.Services.AddSwaggerGen(c =>
                 });
     var filePath = Path.Combine(System.AppContext.BaseDirectory,
        $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
-    c.IncludeXmlComments(filePath);
+    c.IncludeXmlComments(filePath);*/
 });
 
 
@@ -115,19 +115,19 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 
 app.UseCors(options =>
-                options.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());*/
+                options.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-
-/*app.UseSwagger();
-app.UseSwaggerUI(c =>
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAuction v1");
-    c.DisplayRequestDuration();
-});
-//}
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAuction v1");
+        c.DisplayRequestDuration();
+    });
+}
 
 var dir = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
 if (!Directory.Exists(dir))
@@ -137,12 +137,12 @@ if (!Directory.Exists(dir))
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(dir),
-    RequestPath = "/uploads"
+    RequestPath = "/images"
 });
 
 
 app.UseAuthentication();
-app.UseAuthorization();
+/*app.UseAuthorization();
 
 
 app.MapControllers();
@@ -152,7 +152,7 @@ app.Run();*/
 
 
 
-builder.Services.AddSwaggerGen();
+/*builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -161,7 +161,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+}*/
 
 app.UseAuthorization();
 
