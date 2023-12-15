@@ -12,11 +12,11 @@ namespace Data.Entities
     public class ProductEntity : BaseEntity<int>
     {
         [Display(Name = "Назва"), Required(ErrorMessage = "Поле 'Назва' не може бути пустим!")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [Display(Name = "Ціна"), Required(ErrorMessage = "Поле 'Ціна' не може бути пустим!")]
-        public int Price { get; set; }
+        public int?  Price { get; set; }
         [Display(Name = "Опис товару"), Required(ErrorMessage = "Поле 'Опис товару' не може бути пустим!")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         /* [Display(Name = "Титульна фотографія")]
          public string StartPhoto { get; set; }
          public int Rating { get; set; }
@@ -25,9 +25,9 @@ namespace Data.Entities
         [Display(Name = "Категория")]
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }
-        public virtual CategoryEntity Category { get; set; }
-        public virtual ICollection<CartEntity> CartEntities { get; set; }
-        public virtual ICollection<ProductImageEntity> ProductImages { get; set; }
+        public virtual CategoryEntity? Category { get; set; }
+        public virtual ICollection<CartEntity>? CartEntities { get; set; }
+        public virtual ICollection<ProductImageEntity>? ProductImages { get; set; }
         /* [Display(Name = "Наявність товару")]
          [ForeignKey("InventoryStatus")]
          public int? InventoryStatusId { get; set; }

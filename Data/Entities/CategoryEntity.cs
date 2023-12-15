@@ -11,12 +11,12 @@ namespace Data.Entities
     [Table("tblCategories")]
     public class CategoryEntity:BaseEntity<int>
     {
-        [Key]
-        public int Id { get; set; }
+       /* [Key]
+        public int Id { get; set; }*/
         [Required, StringLength(100)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Required, StringLength(255)]
-        public string Image { get; set; }
-        public virtual ICollection<ProductEntity> Product { get; set; }
+        public string? Image { get; set; }
+        public virtual ICollection<ProductEntity>? Product { get; set; }
     }
 }

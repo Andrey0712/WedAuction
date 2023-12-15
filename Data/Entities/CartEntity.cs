@@ -28,7 +28,7 @@ namespace Data.Entities
         [ForeignKey("Product")]
         public int ProductId { get; set; }
 
-        public virtual AppUser User { get; set; }
-        public virtual ProductEntity Product { get; set; }
+        public virtual AppUser? User { get; set; }
+        public virtual ProductEntity? Product { get; set; }
     }
 }

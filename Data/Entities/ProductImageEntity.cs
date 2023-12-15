@@ -12,8 +12,8 @@ namespace Data.Entities
     public class ProductImageEntity:BaseEntity<int>
     {
         [Required,StringLength(255)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int? ProductId { get; set; }
-        public virtual ProductEntity Product { get; set; }
+        public virtual ProductEntity   ? Product { get; set; }
     }
 }
