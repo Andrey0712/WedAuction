@@ -13,6 +13,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Data.Entities.Identity;
+using WebAuction.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +34,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
     options.Password.RequireLowercase = false;
 }).AddEntityFrameworkStores<AppEFContext>().AddDefaultTokenProviders();
 
-
+builder.Services.AddAutoMapper(typeof(AppMapProfile));
 // Add services to the container.
 
 

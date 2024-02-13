@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿
 using Data.Entities.Identity;
 using Data;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +9,7 @@ using System.Data;
 using WebAuction.Models;
 using Microsoft.AspNetCore.Authorization;
 using WebAuction.Constants;
+using AutoMapper;
 
 namespace WebAuction.Controllers
 {
@@ -19,27 +20,31 @@ namespace WebAuction.Controllers
 
        
             private readonly IMapper _mapper;
-            private readonly UserManager<AppUser> _userManager;
-            private readonly IJwtTokenService _jwtTokenService;
+            private readonly UserManager<AppUser> _userManager; 
+        private readonly RoleManager<AppRole> _roleManager;
+            /*private readonly IJwtTokenService _jwtTokenService;
             private readonly SignInManager<AppUser> _signInManager;
             private readonly AppEFContext _context;
             private IHostEnvironment _host;
-            private readonly RoleManager<AppRole> _roleManager;
-            private readonly ILogger<AccountController> _logger;
+           
+            private readonly ILogger<AccountController> _logger;*/
 
-            public AccountController(UserManager<AppUser> userManeger, SignInManager<AppUser> signInManager,
-                AppEFContext context, IMapper mapper, IJwtTokenService jwtTokenService, IHostEnvironment host,
-                ILogger<AccountController> logger, RoleManager<AppRole> roleManager)
-            {
-                _userManager = userManeger;
-                _signInManager = signInManager;
-                _mapper = mapper;
-                _jwtTokenService = jwtTokenService;
-                _context = context;
-                _host = host;
-                _logger = logger;
-                _roleManager = roleManager;
-            }
+            public AccountController(UserManager<AppUser> userManeger, IMapper mapper, RoleManager<AppRole> roleManager
+                /*SignInManager<AppUser> signInManager,
+                AppEFContext context,IJwtTokenService jwtTokenService, IHostEnvironment host,
+                ILogger<AccountController> logger,*/
+                )
+        {
+            _userManager = userManeger;
+            _mapper = mapper;
+            _roleManager = roleManager;
+           /* _signInManager = signInManager;
+                        _jwtTokenService = jwtTokenService;
+            _context = context;
+            _host = host;
+            _logger = logger;
+            */
+        }
 
             /// <summary>
             /// Реєстрація юзера
@@ -55,32 +60,33 @@ namespace WebAuction.Controllers
                         [HttpPost("register")]
                         public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
                         {
-                            String imageName = string.Empty;
-                            if (model.Avatar != null)
-                            {
-                                var fileExp = Path.GetExtension(model.Avatar.FileName);
-                                var dirSave = Path.Combine(Directory.GetCurrentDirectory(), "images");
-                                imageName = Path.GetRandomFileName() + fileExp;
-                                using (var steam = System.IO.File.Create(Path.Combine(dirSave, imageName)))
-                                {
-                                    await model.Avatar.CopyToAsync(steam);
-                                }
-                            }
-                            var user = new AppUser()
-                            {
-                                Name = model.Name,
-                                Email = model.Email,
-                                Avatar = imageName,
-                                UserName = model.Email
-                            };
-                            var result = await _userManager.CreateAsync(user, model.Password);
-                            if (result.Succeeded)
-                            {
-                                result = await _userManager.AddToRoleAsync(user, Roles.User);
-                                return Ok();
-                            }
-                            return BadRequest();
-                        }
+
+            String imageName = string.Empty;
+            if (model.Avatar != null)
+            {
+                var fileExp = Path.GetExtension(model.Avatar.FileName);
+                var dirSave = Path.Combine(Directory.GetCurrentDirectory(), "images");
+                imageName = Path.GetRandomFileName() + fileExp;
+                using (var steam = System.IO.File.Create(Path.Combine(dirSave, imageName)))
+                {
+                    await model.Avatar.CopyToAsync(steam);
+                }
+            }
+            var user = new AppUser()
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Avatar = imageName,
+                UserName = model.Email
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                result = await _userManager.AddToRoleAsync(user, Roles.User);
+                return Ok();
+            }
+            return BadRequest();
+        }
 
             /* [HttpPost]
              [Route("register")]
