@@ -9,7 +9,7 @@ namespace Data.Entities
 {
     public interface IEntity<T>
     {
-        T? Id { get; set; }
+        T Id { get; set; }
         bool IsDeleted { get; set; }
         DateTime DateCreated { get; set; }
     }
@@ -17,7 +17,7 @@ namespace Data.Entities
     public abstract class BaseEntity<T> : IEntity<T>
     {
         [Key]
-        public T? Id { get; set; }
+        public T Id { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
     }

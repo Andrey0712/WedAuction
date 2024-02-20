@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using Data.Entities.Identity;
 using WebAuction.Mapper;
+using WebAuction.Abstract;
+using WebAuction.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,12 +51,12 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 });
-
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-/*var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<String>("JwtKey")));
+var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<String>("JwtKey")));
 
 builder.Services.AddAuthentication(options =>
 {
@@ -73,7 +75,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ClockSkew = TimeSpan.Zero
     };
-});*/
+});
 
 builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Program>());
 
