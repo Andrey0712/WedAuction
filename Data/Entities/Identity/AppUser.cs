@@ -15,6 +15,6 @@ namespace Data.Entities.Identity
         [StringLength(100)]
         public string? Avatar { get; set; }
         public virtual ICollection<AppUserRole> UserRoles { get; set; }
-        public virtual ICollection<CartEntity>? CartEntities { get; set; }
+        public virtual ICollection<CartEntity> CartEntities { get; set; }
     }
 }

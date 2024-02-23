@@ -22,24 +22,25 @@ namespace WebAuction.Controllers
             private readonly IMapper _mapper;
             private readonly UserManager<AppUser> _userManager; 
         private readonly RoleManager<AppRole> _roleManager;
-            /*private readonly IJwtTokenService _jwtTokenService;
-            private readonly SignInManager<AppUser> _signInManager;
+            private readonly IJwtTokenService _jwtTokenService;
+            /*private readonly SignInManager<AppUser> _signInManager;
             private readonly AppEFContext _context;
             private IHostEnvironment _host;
            
             private readonly ILogger<AccountController> _logger;*/
 
-            public AccountController(UserManager<AppUser> userManeger, IMapper mapper, RoleManager<AppRole> roleManager
+            public AccountController(UserManager<AppUser> userManeger, IMapper mapper, RoleManager<AppRole> roleManager,IJwtTokenService jwtTokenService
                 /*SignInManager<AppUser> signInManager,
-                AppEFContext context,IJwtTokenService jwtTokenService, IHostEnvironment host,
+                AppEFContext context, IHostEnvironment host,
                 ILogger<AccountController> logger,*/
                 )
         {
             _userManager = userManeger;
             _mapper = mapper;
             _roleManager = roleManager;
+            _jwtTokenService = jwtTokenService;
            /* _signInManager = signInManager;
-                        _jwtTokenService = jwtTokenService;
+                        
             _context = context;
             _host = host;
             _logger = logger;
@@ -57,7 +58,7 @@ namespace WebAuction.Controllers
             /// <response code="500">Oops! Can't Register right now</response>
 
             
-                        [HttpPost("register")]
+                       /* [HttpPost("register")]
                         public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
                         {
 
@@ -86,36 +87,47 @@ namespace WebAuction.Controllers
                 return Ok();
             }
             return BadRequest();
-        }
+        }*/
 
-            /* [HttpPost]
-             [Route("register")]
-             public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
+        {
+            /* String imageName = string.Empty;
+             if (model.Avatar != null)
              {
-                 //string fileName = String.Empty;
-                 var rez = _roleManager.CreateAsync(new AppRole
+                 var fileExp = Path.GetExtension(model.Avatar.FileName);
+                 var dirSave = Path.Combine(Directory.GetCurrentDirectory(), "images");
+                 imageName = Path.GetRandomFileName() + fileExp;
+                 using (var steam = System.IO.File.Create(Path.Combine(dirSave, imageName)))
                  {
-                     Name = Roles.User
-                 }).Result;
-                 var user = _mapper.Map<AppUser>(model);
-
-                 var result = await _userManager.CreateAsync(user, model.Password);
-
-                 if (result.Succeeded)
-                 {
-                     result = _userManager.AddToRoleAsync(user, Roles.User).Result;
+                     await model.Avatar.CopyToAsync(steam);
                  }
-
-                 if (!result.Succeeded)
-                     return BadRequest(new { errors = result.Errors });
-
-
-                 return Ok(new { token = _jwtTokenService.CreateToken(user) });
-
-
              }*/
 
+            var rez = _roleManager.CreateAsync(new AppRole
+            {
+                Name = Roles.User
+            }).Result;
+            var user = _mapper.Map<AppUser>(model);
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                result = _userManager.AddToRoleAsync(user, Roles.User).Result;
+            }
+
+            if (!result.Succeeded)
+                return BadRequest(new { errors = result.Errors });
+
+
+            return Ok(new { token = _jwtTokenService.CreateToken(user) });
+
 
         }
+
+
+    }
     
 }
