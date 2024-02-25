@@ -93,23 +93,43 @@ namespace WebAuction.Controllers
         [Route("register")]
         public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
         {
-            /* String imageName = string.Empty;
-             if (model.Avatar != null)
-             {
-                 var fileExp = Path.GetExtension(model.Avatar.FileName);
-                 var dirSave = Path.Combine(Directory.GetCurrentDirectory(), "images");
-                 imageName = Path.GetRandomFileName() + fileExp;
-                 using (var steam = System.IO.File.Create(Path.Combine(dirSave, imageName)))
-                 {
-                     await model.Avatar.CopyToAsync(steam);
-                 }
-             }*/
+            
+
+            string fileName = String.Empty;
 
             var rez = _roleManager.CreateAsync(new AppRole
             {
                 Name = Roles.User
             }).Result;
             var user = _mapper.Map<AppUser>(model);
+
+           
+            if (model.Avatar != null)
+            {
+                var fileExp = Path.GetExtension(model.Avatar.FileName);
+                var dirSave = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                fileName = Path.GetRandomFileName() + fileExp;
+                using (var file = System.IO.File.Create(Path.Combine(dirSave, fileName)))
+                {
+                    await model.Avatar.CopyToAsync(file);
+                }
+            }
+
+
+            /* if(model.Avatar != null)
+             {
+                 string randomFileName = Path.GetRandomFileName()
+                     + Path.GetExtension(model.Avatar.FileName);
+                 string dirPath=Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                 fileName=Path.Combine(dirPath, randomFileName);
+
+                 using(var file=System.IO.File.Create(fileName))
+                 {
+                     model.Avatar.CopyTo(file);
+                 }
+                 user.Avatar = randomFileName;
+
+             }*/
 
             var result = await _userManager.CreateAsync(user, model.Password);
 
