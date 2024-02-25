@@ -82,7 +82,7 @@ builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContai
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAuction", Version = "v1" });
-    /*c.AddSecurityDefinition("Bearer",
+   /* c.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {
             Description = "JWT Authorization header using the Bearer scheme.",
@@ -132,6 +132,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+//статические файлі
 var dir = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
 if (!Directory.Exists(dir))
 {

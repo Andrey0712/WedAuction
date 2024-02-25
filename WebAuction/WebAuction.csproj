@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="images\**" />
+    <Content Remove="images\**" />
+    <EmbeddedResource Remove="images\**" />
+    <None Remove="images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.13" />
 	  <PackageReference Include="AutoMapper" Version="11.0.1" />
@@ -30,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="images\" />
+    <Folder Include="uploads\" />
   </ItemGroup>
 
 </Project>
