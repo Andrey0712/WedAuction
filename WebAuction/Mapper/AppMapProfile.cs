@@ -12,6 +12,15 @@ namespace WebAuction.Mapper
                     .ForMember(x => x.UserName, opt => opt.MapFrom(x => x.Email))
             .ForMember(x => x.Email, opt => opt.MapFrom(x => x.Email))
             .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name));
+       
+        CreateMap<AppUser,UserViewModel>()
+                .ForMember(x=>x.Avatar, opt => opt.MapFrom(x=>$"/uploads/{x.Avatar}"))
+                .ForMember(x=>x.Name,opt=>opt.MapFrom(x=>x.Name))
+                .ForMember(x=>x.Email,opt=>opt.MapFrom(x=>x.Email));
+        
         }
+
+
+        
     }
 }

@@ -25,7 +25,7 @@ namespace WebAuction.Service
             {
                 new Claim("name", user.Name),
                 new Claim("email", user.Email),
-            //new Claim("image", user.Avatar ?? string.Empty),
+            new Claim("avatar", user.Avatar ?? string.Empty),
 
         };
 

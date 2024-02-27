@@ -10,6 +10,7 @@ using WebAuction.Models;
 using Microsoft.AspNetCore.Authorization;
 using WebAuction.Constants;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAuction.Controllers
 {
@@ -23,15 +24,17 @@ namespace WebAuction.Controllers
             private readonly UserManager<AppUser> _userManager; 
         private readonly RoleManager<AppRole> _roleManager;
             private readonly IJwtTokenService _jwtTokenService;
+        private readonly AppEFContext _context;
             /*private readonly SignInManager<AppUser> _signInManager;
-            private readonly AppEFContext _context;
+            
             private IHostEnvironment _host;
            
             private readonly ILogger<AccountController> _logger;*/
 
-            public AccountController(UserManager<AppUser> userManeger, IMapper mapper, RoleManager<AppRole> roleManager,IJwtTokenService jwtTokenService
+            public AccountController(UserManager<AppUser> userManeger, IMapper mapper, RoleManager<AppRole> roleManager,
+                IJwtTokenService jwtTokenService,AppEFContext context
                 /*SignInManager<AppUser> signInManager,
-                AppEFContext context, IHostEnvironment host,
+                 IHostEnvironment host,
                 ILogger<AccountController> logger,*/
                 )
         {
@@ -39,9 +42,10 @@ namespace WebAuction.Controllers
             _mapper = mapper;
             _roleManager = roleManager;
             _jwtTokenService = jwtTokenService;
+            _context = context;
            /* _signInManager = signInManager;
                         
-            _context = context;
+            
             _host = host;
             _logger = logger;
             */
@@ -113,6 +117,7 @@ namespace WebAuction.Controllers
                 {
                     await model.Avatar.CopyToAsync(file);
                 }
+                user.Avatar = fileName;
             }
 
 
@@ -144,6 +149,16 @@ namespace WebAuction.Controllers
 
             return Ok(new { token = _jwtTokenService.CreateToken(user) });
 
+
+        }
+
+        [HttpGet]
+        [Route("users")]
+        public async Task<IActionResult> Users()
+        {
+            var list =  _context.Users.Select(x => _mapper.Map<UserViewModel>(x))
+                .AsQueryable().ToArrayAsync();
+            return Ok(list);
 
         }
 
