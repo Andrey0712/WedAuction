@@ -1,20 +1,32 @@
 ﻿
 using Data.Entities.Identity;
 using Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebAuction.Abstract;
 using System.Data;
 using WebAuction.Models;
-using Microsoft.AspNetCore.Authorization;
 using WebAuction.Constants;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Components;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
 
 namespace WebAuction.Controllers
 {
-    [Route("api/[controller]")]
+    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
+    
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -94,7 +106,7 @@ namespace WebAuction.Controllers
         }*/
 
         [HttpPost]
-        [Route("register")]
+        [Microsoft.AspNetCore.Mvc.Route("register")]
         public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
         {
             
@@ -152,14 +164,61 @@ namespace WebAuction.Controllers
 
         }
 
+        /// <summary>
+        /// Відображення юзерів
+        /// </summary>
+        /// <param name="model">Понель із даними</param>
+        /// <returns>Повертає список юзерів</returns>
+        /// <remarks>Awesomeness!</remarks>
+        /// <response code="200">Users</response>
+        /// <response code="400">Users has missing/invalid values</response>
+        /// <response code="500">Oops! Can't Users show now</response>
         [HttpGet]
-        [Route("users")]
+        [Authorize]
+        [Microsoft.AspNetCore.Mvc.Route("users")]
         public async Task<IActionResult> Users()
         {
-            var list =  _context.Users.Select(x => _mapper.Map<UserViewModel>(x))
+            var list = await  _context.Users.Select(x => _mapper.Map<UserViewModel>(x))
                 .AsQueryable().ToArrayAsync();
             return Ok(list);
 
+        }
+
+        /// <summary>
+        /// Авторизація юзера
+        /// </summary>
+        /// <param name="model">Понель із даними</param>
+        /// <returns>Повертає токен авторизації</returns>
+        /// <remarks>Awesomeness!</remarks>
+        /// <response code="200">Avtorize user</response>
+        /// <response code="400">Avtorize has missing/invalid values</response>
+        /// <response code="500">Oops! Can't Avtorize right now</response>
+        [HttpPost]
+        [Microsoft.AspNetCore.Mvc.Route("login")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenViewModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Login([FromBody] LoginUserModel model)
+        {
+            try
+            {
+var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user != null)
+            {
+                if (await _userManager.CheckPasswordAsync(user, model.Password))
+                {
+                    return Ok(
+                        new  { token = _jwtTokenService.CreateToken(user) }
+                        //new TokenViewModel { token = _jwtTokenService.CreateToken(user) }
+                        );
+                }
+            }
+            return BadRequest(new { error = "User not found" });
+            }
+            catch(Exception ex) 
+            {
+                return BadRequest(new { error = "Server exception" });
+            }
+            
         }
 
 

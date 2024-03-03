@@ -82,7 +82,7 @@ builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContai
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAuction", Version = "v1" });
-   /* c.AddSecurityDefinition("Bearer",
+    c.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {
             Description = "JWT Authorization header using the Bearer scheme.",
@@ -101,7 +101,7 @@ builder.Services.AddSwaggerGen(c =>
                 });
     var filePath = Path.Combine(System.AppContext.BaseDirectory,
        $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
-    c.IncludeXmlComments(filePath);*/
+    c.IncludeXmlComments(filePath);
 });
 
 

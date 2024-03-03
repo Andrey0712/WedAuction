@@ -8,7 +8,7 @@
         /// </summary>
         /// <example>Іван</example>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// Електронна пошта
         /// </summary>
@@ -38,4 +38,28 @@
         public string? Avatar { get; set; }
 
     }
+
+    public class LoginUserModel
+    {
+        /// <summary>
+        /// Електронна пошта
+        /// </summary>
+        /// <example>Ira@gmail.com</example>
+        public string Email { get; set; }
+        /// <summary>
+        /// Підтверження пароль
+        /// </summary>
+        /// <example>12345</example>
+        public string Password { get; set; }
+    }
+
+    public class TokenViewModel
+    {
+        /// <summary>
+        /// token
+        /// </summary>
+        /// <example>eyJpZCI6IjEzMzciLCJ1c2VybmFtZSI6ImJpem9uZSIsImlhdCI6MTU5NDIwOTYwMCwicm9sZSI6InVzZXIifQ</example>
+        public string token { get; set; }
+    }
+
 }
