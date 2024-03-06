@@ -16,6 +16,7 @@ using Data.Entities.Identity;
 using WebAuction.Mapper;
 using WebAuction.Abstract;
 using WebAuction.Service;
+using Data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -116,6 +117,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 
 
+//app.UseLoggerFile();
 
 app.UseCors(options =>
                 options.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
@@ -170,5 +172,6 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+app.SeedData();
 
 app.Run();
