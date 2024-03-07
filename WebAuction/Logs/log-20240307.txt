@@ -1,0 +1,22 @@
+2024-03-07T16:30:35.0293672+02:00  [INF] seeding database (240e1b55)
+2024-03-07T16:30:37.0891910+02:00  [INF] Executed DbCommand ("38"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-07T16:30:37.1007295+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-07T16:30:37.1194570+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-07T16:30:37.1666871+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-07T16:30:37.8519296+02:00  [INF] Executed DbCommand ("49"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-07T16:30:37.8588597+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-07T16:30:38.0758941+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-07T16:30:38.0760605+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-07T16:30:38.0771285+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-07T16:30:38.0772117+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)

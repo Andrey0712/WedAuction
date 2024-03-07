@@ -17,6 +17,7 @@ using WebAuction.Mapper;
 using WebAuction.Abstract;
 using WebAuction.Service;
 using Data.Entities;
+using WebAuction.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -109,6 +110,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors();
 
 var app = builder.Build();
+
+app.UseLoggerFile();
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
