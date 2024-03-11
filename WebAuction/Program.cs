@@ -18,6 +18,7 @@ using WebAuction.Abstract;
 using WebAuction.Service;
 using Data.Entities;
 using WebAuction.Helpers;
+using WebAuction.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -120,7 +121,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 
 
-//app.UseLoggerFile();
 
 app.UseCors(options =>
                 options.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
@@ -173,6 +173,7 @@ if (app.Environment.IsDevelopment())
 }*/
 
 app.UseAuthorization();
+app.UseCustomExceptionHandler();
 
 app.MapControllers();
 app.SeedData();

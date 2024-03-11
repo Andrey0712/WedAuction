@@ -1,0 +1,338 @@
+2024-03-11T12:55:27.0164606+02:00  [INF] seeding database (240e1b55)
+2024-03-11T12:55:30.3173147+02:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T12:55:30.6175568+02:00  [INF] Executed DbCommand ("69"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"__EFMigrationsHistory\" (
+    \"MigrationId\" TEXT NOT NULL CONSTRAINT \"PK___EFMigrationsHistory\" PRIMARY KEY,
+    \"ProductVersion\" TEXT NOT NULL
+);" (0723d8ff)
+2024-03-11T12:55:30.6205481+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T12:55:30.6246938+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-11T12:55:30.7036864+02:00  [INF] Applying migration '"20240220160057_add identity"'. (0e2ac64d)
+2024-03-11T12:55:30.8137175+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetRoles\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_AspNetRoles\" PRIMARY KEY AUTOINCREMENT,
+    \"Name\" TEXT NULL,
+    \"NormalizedName\" TEXT NULL,
+    \"ConcurrencyStamp\" TEXT NULL
+);" (0723d8ff)
+2024-03-11T12:55:30.8141438+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUsers\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_AspNetUsers\" PRIMARY KEY AUTOINCREMENT,
+    \"Name\" TEXT NOT NULL,
+    \"Avatar\" TEXT NULL,
+    \"UserName\" TEXT NULL,
+    \"NormalizedUserName\" TEXT NULL,
+    \"Email\" TEXT NULL,
+    \"NormalizedEmail\" TEXT NULL,
+    \"EmailConfirmed\" INTEGER NOT NULL,
+    \"PasswordHash\" TEXT NULL,
+    \"SecurityStamp\" TEXT NULL,
+    \"ConcurrencyStamp\" TEXT NULL,
+    \"PhoneNumber\" TEXT NULL,
+    \"PhoneNumberConfirmed\" INTEGER NOT NULL,
+    \"TwoFactorEnabled\" INTEGER NOT NULL,
+    \"LockoutEnd\" TEXT NULL,
+    \"LockoutEnabled\" INTEGER NOT NULL,
+    \"AccessFailedCount\" INTEGER NOT NULL
+);" (0723d8ff)
+2024-03-11T12:55:30.8143792+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"tblCategories\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_tblCategories\" PRIMARY KEY AUTOINCREMENT,
+    \"Name\" TEXT NOT NULL,
+    \"Image\" TEXT NOT NULL,
+    \"IsDeleted\" INTEGER NOT NULL,
+    \"DateCreated\" TEXT NOT NULL
+);" (0723d8ff)
+2024-03-11T12:55:30.8146132+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetRoleClaims\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_AspNetRoleClaims\" PRIMARY KEY AUTOINCREMENT,
+    \"RoleId\" INTEGER NOT NULL,
+    \"ClaimType\" TEXT NULL,
+    \"ClaimValue\" TEXT NULL,
+    CONSTRAINT \"FK_AspNetRoleClaims_AspNetRoles_RoleId\" FOREIGN KEY (\"RoleId\") REFERENCES \"AspNetRoles\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8148482+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserClaims\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_AspNetUserClaims\" PRIMARY KEY AUTOINCREMENT,
+    \"UserId\" INTEGER NOT NULL,
+    \"ClaimType\" TEXT NULL,
+    \"ClaimValue\" TEXT NULL,
+    CONSTRAINT \"FK_AspNetUserClaims_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8151097+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserLogins\" (
+    \"LoginProvider\" TEXT NOT NULL,
+    \"ProviderKey\" TEXT NOT NULL,
+    \"ProviderDisplayName\" TEXT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    CONSTRAINT \"PK_AspNetUserLogins\" PRIMARY KEY (\"LoginProvider\", \"ProviderKey\"),
+    CONSTRAINT \"FK_AspNetUserLogins_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8162872+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserRoles\" (
+    \"UserId\" INTEGER NOT NULL,
+    \"RoleId\" INTEGER NOT NULL,
+    CONSTRAINT \"PK_AspNetUserRoles\" PRIMARY KEY (\"UserId\", \"RoleId\"),
+    CONSTRAINT \"FK_AspNetUserRoles_AspNetRoles_RoleId\" FOREIGN KEY (\"RoleId\") REFERENCES \"AspNetRoles\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_AspNetUserRoles_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8168164+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"AspNetUserTokens\" (
+    \"UserId\" INTEGER NOT NULL,
+    \"LoginProvider\" TEXT NOT NULL,
+    \"Name\" TEXT NOT NULL,
+    \"Value\" TEXT NULL,
+    CONSTRAINT \"PK_AspNetUserTokens\" PRIMARY KEY (\"UserId\", \"LoginProvider\", \"Name\"),
+    CONSTRAINT \"FK_AspNetUserTokens_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8171581+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"tblProducts\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_tblProducts\" PRIMARY KEY AUTOINCREMENT,
+    \"Title\" TEXT NOT NULL,
+    \"Price\" INTEGER NOT NULL,
+    \"Description\" TEXT NOT NULL,
+    \"CategoryId\" INTEGER NOT NULL,
+    \"IsDeleted\" INTEGER NOT NULL,
+    \"DateCreated\" TEXT NOT NULL,
+    CONSTRAINT \"FK_tblProducts_tblCategories_CategoryId\" FOREIGN KEY (\"CategoryId\") REFERENCES \"tblCategories\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8174518+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"tblCartEntities\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_tblCartEntities\" PRIMARY KEY AUTOINCREMENT,
+    \"Quantity\" INTEGER NOT NULL,
+    \"UserId\" INTEGER NOT NULL,
+    \"ProductId\" INTEGER NOT NULL,
+    \"IsDeleted\" INTEGER NOT NULL,
+    \"DateCreated\" TEXT NOT NULL,
+    CONSTRAINT \"FK_tblCartEntities_AspNetUsers_UserId\" FOREIGN KEY (\"UserId\") REFERENCES \"AspNetUsers\" (\"Id\") ON DELETE CASCADE,
+    CONSTRAINT \"FK_tblCartEntities_tblProducts_ProductId\" FOREIGN KEY (\"ProductId\") REFERENCES \"tblProducts\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8177330+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE \"tblProductImages\" (
+    \"Id\" INTEGER NOT NULL CONSTRAINT \"PK_tblProductImages\" PRIMARY KEY AUTOINCREMENT,
+    \"Name\" TEXT NOT NULL,
+    \"ProductId\" INTEGER NOT NULL,
+    \"IsDeleted\" INTEGER NOT NULL,
+    \"DateCreated\" TEXT NOT NULL,
+    CONSTRAINT \"FK_tblProductImages_tblProducts_ProductId\" FOREIGN KEY (\"ProductId\") REFERENCES \"tblProducts\" (\"Id\") ON DELETE CASCADE
+);" (0723d8ff)
+2024-03-11T12:55:30.8180183+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetRoleClaims_RoleId\" ON \"AspNetRoleClaims\" (\"RoleId\");" (0723d8ff)
+2024-03-11T12:55:30.8182686+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX \"RoleNameIndex\" ON \"AspNetRoles\" (\"NormalizedName\");" (0723d8ff)
+2024-03-11T12:55:30.8185051+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetUserClaims_UserId\" ON \"AspNetUserClaims\" (\"UserId\");" (0723d8ff)
+2024-03-11T12:55:30.8187521+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetUserLogins_UserId\" ON \"AspNetUserLogins\" (\"UserId\");" (0723d8ff)
+2024-03-11T12:55:30.8189955+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_AspNetUserRoles_RoleId\" ON \"AspNetUserRoles\" (\"RoleId\");" (0723d8ff)
+2024-03-11T12:55:30.8192199+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"EmailIndex\" ON \"AspNetUsers\" (\"NormalizedEmail\");" (0723d8ff)
+2024-03-11T12:55:30.8194736+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX \"UserNameIndex\" ON \"AspNetUsers\" (\"NormalizedUserName\");" (0723d8ff)
+2024-03-11T12:55:30.8197103+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_tblCartEntities_ProductId\" ON \"tblCartEntities\" (\"ProductId\");" (0723d8ff)
+2024-03-11T12:55:30.8199619+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_tblCartEntities_UserId\" ON \"tblCartEntities\" (\"UserId\");" (0723d8ff)
+2024-03-11T12:55:30.8208172+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_tblProductImages_ProductId\" ON \"tblProductImages\" (\"ProductId\");" (0723d8ff)
+2024-03-11T12:55:30.8211245+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX \"IX_tblProducts_CategoryId\" ON \"tblProducts\" (\"CategoryId\");" (0723d8ff)
+2024-03-11T12:55:30.8212916+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"__EFMigrationsHistory\" (\"MigrationId\", \"ProductVersion\")
+VALUES ('20240220160057_add identity', '7.0.13');" (0723d8ff)
+2024-03-11T12:55:31.4565610+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-11T12:55:31.6977610+02:00  [INF] Executed DbCommand ("10"ms) [Parameters=["@__normalizedName_0='?' (Size = 5)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedName_0
+LIMIT 1" (0723d8ff)
+2024-03-11T12:55:32.0836018+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 36), @p1='?' (Size = 5), @p2='?' (Size = 5)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetRoles\" (\"ConcurrencyStamp\", \"Name\", \"NormalizedName\")
+VALUES (@p0, @p1, @p2)
+RETURNING \"Id\";" (0723d8ff)
+2024-03-11T12:55:32.1590764+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedName_0
+LIMIT 1" (0723d8ff)
+2024-03-11T12:55:32.1655117+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (Size = 36), @p1='?' (Size = 4), @p2='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetRoles\" (\"ConcurrencyStamp\", \"Name\", \"NormalizedName\")
+VALUES (@p0, @p1, @p2)
+RETURNING \"Id\";" (0723d8ff)
+2024-03-11T12:55:32.1984939+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-11T12:55:32.2476967+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedUserName\" = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2024-03-11T12:55:32.3706316+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 16), @p2='?' (Size = 36), @p3='?' (Size = 15), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 5), @p8='?' (Size = 15), @p9='?' (Size = 15), @p10='?' (Size = 84), @p11='?', @p12='?' (DbType = Boolean), @p13='?' (Size = 32), @p14='?' (DbType = Boolean), @p15='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUsers\" (\"AccessFailedCount\", \"Avatar\", \"ConcurrencyStamp\", \"Email\", \"EmailConfirmed\", \"LockoutEnabled\", \"LockoutEnd\", \"Name\", \"NormalizedEmail\", \"NormalizedUserName\", \"PasswordHash\", \"PhoneNumber\", \"PhoneNumberConfirmed\", \"SecurityStamp\", \"TwoFactorEnabled\", \"UserName\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15)
+RETURNING \"Id\";" (0723d8ff)
+2024-03-11T12:55:32.4307826+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 5)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedRoleName_0
+LIMIT 2" (0723d8ff)
+2024-03-11T12:55:32.5001728+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int64), @__p_1='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"UserId\", \"a\".\"RoleId\"
+FROM \"AspNetUserRoles\" AS \"a\"
+WHERE \"a\".\"UserId\" = @__p_0 AND \"a\".\"RoleId\" = @__p_1
+LIMIT 1" (0723d8ff)
+2024-03-11T12:55:32.5075315+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 5)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedRoleName_0
+LIMIT 2" (0723d8ff)
+2024-03-11T12:55:32.5688283+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedUserName\" = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2024-03-11T12:55:32.6078258+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Int64), @p1='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUserRoles\" (\"RoleId\", \"UserId\")
+VALUES (@p0, @p1);" (0723d8ff)
+2024-03-11T12:55:32.6113272+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=["@p16='?' (DbType = Int64), @p0='?' (DbType = Int32), @p1='?' (Size = 16), @p2='?' (Size = 36), @p17='?' (Size = 36), @p3='?' (Size = 15), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 5), @p8='?' (Size = 15), @p9='?' (Size = 15), @p10='?' (Size = 84), @p11='?', @p12='?' (DbType = Boolean), @p13='?' (Size = 32), @p14='?' (DbType = Boolean), @p15='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"AspNetUsers\" SET \"AccessFailedCount\" = @p0, \"Avatar\" = @p1, \"ConcurrencyStamp\" = @p2, \"Email\" = @p3, \"EmailConfirmed\" = @p4, \"LockoutEnabled\" = @p5, \"LockoutEnd\" = @p6, \"Name\" = @p7, \"NormalizedEmail\" = @p8, \"NormalizedUserName\" = @p9, \"PasswordHash\" = @p10, \"PhoneNumber\" = @p11, \"PhoneNumberConfirmed\" = @p12, \"SecurityStamp\" = @p13, \"TwoFactorEnabled\" = @p14, \"UserName\" = @p15
+WHERE \"Id\" = @p16 AND \"ConcurrencyStamp\" = @p17
+RETURNING 1;" (0723d8ff)
+2024-03-11T12:55:32.9903506+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-11T12:55:32.9906180+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-11T12:55:32.9917714+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-11T12:55:32.9918521+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-11T14:30:31.6295570+02:00  [INF] seeding database (240e1b55)
+2024-03-11T14:30:33.8440561+02:00  [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:30:33.8583925+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:30:33.8801443+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-11T14:30:33.9172865+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-11T14:30:34.3488202+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-11T14:30:34.3542919+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-11T14:30:34.5111966+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-11T14:30:34.5113750+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-11T14:30:34.5131663+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-11T14:30:34.5132650+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-11T14:30:52.4714956+02:00  [INF] seeding database (240e1b55)
+2024-03-11T14:30:54.2466760+02:00  [INF] Executed DbCommand ("20"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:30:54.2576241+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:30:54.2768165+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-11T14:30:54.3094193+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-11T14:30:54.7235600+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-11T14:30:54.7289586+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-11T14:30:54.8748739+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-11T14:30:54.8752230+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-11T14:30:54.8766325+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-11T14:30:54.8767080+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-11T14:53:22.5211707+02:00  [INF] seeding database (240e1b55)
+2024-03-11T14:53:25.1296483+02:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:53:25.1442163+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:53:25.1640261+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-11T14:53:25.2057914+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-11T14:53:25.9007899+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-11T14:53:25.9083009+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-11T14:53:26.0733375+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-11T14:53:26.0735238+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-11T14:53:26.0751320+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-11T14:53:26.0752527+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-11T14:53:48.0725961+02:00 0HN21P90AII7H:00000004 [INF] login user (272bac74)
+2024-03-11T14:53:48.3420430+02:00 0HN21P90AII7H:00000004 [INF] Executed DbCommand ("20"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-11T14:54:23.4608985+02:00 0HN21P90AII7H:00000005 [INF] login user (272bac74)
+2024-03-11T14:54:23.5589441+02:00 0HN21P90AII7H:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-11T14:54:54.2590802+02:00 0HN21P90AII7H:00000006 [INF] login user (272bac74)
+2024-03-11T14:54:54.2673018+02:00 0HN21P90AII7H:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-11T14:54:55.2134076+02:00 0HN21P90AII7H:00000006 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a0\".\"Name\"
+FROM \"AspNetUserRoles\" AS \"a\"
+INNER JOIN \"AspNetRoles\" AS \"a0\" ON \"a\".\"RoleId\" = \"a0\".\"Id\"
+WHERE \"a\".\"UserId\" = @__userId_0" (0723d8ff)
+2024-03-11T14:56:02.7652214+02:00  [INF] seeding database (240e1b55)
+2024-03-11T14:56:04.5447997+02:00  [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:56:04.5550130+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-11T14:56:04.5751104+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-11T14:56:04.6087815+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-11T14:56:05.0443901+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-11T14:56:05.0497868+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-11T14:56:05.2059153+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-11T14:56:05.2061168+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-11T14:56:05.2074960+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-11T14:56:05.2075956+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-11T14:56:15.1183800+02:00 0HN21PAEG62VK:00000005 [INF] login user (272bac74)
+2024-03-11T14:56:15.2881693+02:00 0HN21PAEG62VK:00000005 [INF] Executed DbCommand ("12"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-11T14:56:48.6979283+02:00 0HN21PAEG62VK:00000006 [INF] login user (272bac74)
+2024-03-11T14:56:48.8002306+02:00 0HN21PAEG62VK:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-11T14:56:48.9860350+02:00 0HN21PAEG62VK:00000006 [WRN] Invalid password for user. (6d284782)

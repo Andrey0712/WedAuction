@@ -37,17 +37,17 @@ namespace WebAuction.Controllers
         private readonly RoleManager<AppRole> _roleManager;
             private readonly IJwtTokenService _jwtTokenService;
         private readonly AppEFContext _context;
-            /*private readonly SignInManager<AppUser> _signInManager;
+            private readonly SignInManager<AppUser> _signInManager;
             
             private IHostEnvironment _host;
            
-            private readonly ILogger<AccountController> _logger;*/
+            private readonly ILogger<AccountController> _logger;
 
             public AccountController(UserManager<AppUser> userManeger, IMapper mapper, RoleManager<AppRole> roleManager,
-                IJwtTokenService jwtTokenService,AppEFContext context
-                /*SignInManager<AppUser> signInManager,
+                IJwtTokenService jwtTokenService,AppEFContext context,
+                SignInManager<AppUser> signInManager,
                  IHostEnvironment host,
-                ILogger<AccountController> logger,*/
+                ILogger<AccountController> logger
                 )
         {
             _userManager = userManeger;
@@ -55,12 +55,12 @@ namespace WebAuction.Controllers
             _roleManager = roleManager;
             _jwtTokenService = jwtTokenService;
             _context = context;
-           /* _signInManager = signInManager;
+            _signInManager = signInManager;
                         
             
             _host = host;
             _logger = logger;
-            */
+            
         }
 
             /// <summary>
@@ -199,8 +199,9 @@ namespace WebAuction.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Login([FromBody] LoginUserModel model)
         {
-            try
-            {
+            _logger.LogInformation("login user");
+           /* try
+            {*/
 var user = await _userManager.FindByEmailAsync(model.Email);
             if (user != null)
             {
@@ -213,11 +214,12 @@ var user = await _userManager.FindByEmailAsync(model.Email);
                 }
             }
             return BadRequest(new { error = "User not found" });
-            }
+           /* }
             catch(Exception ex) 
             {
+                _logger.LogError("Problem login user"+model.Email, ex.Message);
                 return BadRequest(new { error = "Server exception" });
-            }
+            }*/
             
         }
 
