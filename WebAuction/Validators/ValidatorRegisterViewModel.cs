@@ -48,7 +48,7 @@ namespace WebAuction.Validators
         }
     }
 
-    /*public class ValidatorLoginViewModel : AbstractValidator<LoginUserModel>
+    public class ValidatorLoginViewModel : AbstractValidator<LoginUserModel>
     {
         private UserManager<AppUser> _userManager;
         public ValidatorLoginViewModel(UserManager<AppUser> userManager)
@@ -73,5 +73,5 @@ namespace WebAuction.Validators
             return _userManager.FindByEmailAsync(email).Result != null;
         }
 
-    }*/
+    }
 }
