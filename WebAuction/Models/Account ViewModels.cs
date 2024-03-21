@@ -62,4 +62,38 @@
         public string token { get; set; }
     }
 
+    public class UserDelModel
+    {
+        /// <summary>
+        /// id users
+        /// </summary>
+        /// <example>2</example>
+        public long Id {  set; get; }
+    }
+
+    public class EditUserModel
+    {
+        /// <summary>
+        /// id users
+        /// </summary>
+        /// <example>2</example>
+        public long Id { set; get; }
+        /// <summary>
+        /// Ім'я
+        /// </summary>
+        /// <example>Іван</example>
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Електронна пошта
+        /// </summary>
+        /// <example>Email@gmail.com</example>
+        public string? Email { get; set; }
+       
+        /// <summary>
+        /// Оберіть фото користувача
+        /// </summary>
+        public IFormFile? Avatar { get; set; }
+
+    }
 }

@@ -1,0 +1,248 @@
+2024-03-21T17:01:30.7469730+02:00  [INF] seeding database (240e1b55)
+2024-03-21T17:01:38.0519529+02:00  [INF] Executed DbCommand ("45"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-21T17:01:38.0816055+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-21T17:01:38.1309339+02:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-21T17:01:38.2645339+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-21T17:01:39.4816135+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-21T17:01:39.4958703+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-21T17:01:40.5543603+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-21T17:01:40.5640564+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-21T17:01:40.5786166+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-21T17:01:40.5833388+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-21T17:03:06.7623012+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("26"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T17:03:06.9980454+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedName_0
+LIMIT 1" (0723d8ff)
+2024-03-21T17:03:07.2090611+02:00 0HN29MV8E19N6:00000002 [WRN] Role null validation failed: "DuplicateRoleName". (60d773c7)
+2024-03-21T17:03:07.4290581+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedUserName\" = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2024-03-21T17:03:08.2306102+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("21"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 16), @p2='?' (Size = 36), @p3='?' (Size = 15), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 4), @p8='?' (Size = 15), @p9='?' (Size = 15), @p10='?' (Size = 84), @p11='?', @p12='?' (DbType = Boolean), @p13='?' (Size = 32), @p14='?' (DbType = Boolean), @p15='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUsers\" (\"AccessFailedCount\", \"Avatar\", \"ConcurrencyStamp\", \"Email\", \"EmailConfirmed\", \"LockoutEnabled\", \"LockoutEnd\", \"Name\", \"NormalizedEmail\", \"NormalizedUserName\", \"PasswordHash\", \"PhoneNumber\", \"PhoneNumberConfirmed\", \"SecurityStamp\", \"TwoFactorEnabled\", \"UserName\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15)
+RETURNING \"Id\";" (0723d8ff)
+2024-03-21T17:03:08.4521660+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedRoleName_0
+LIMIT 2" (0723d8ff)
+2024-03-21T17:03:08.5203193+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int64), @__p_1='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"UserId\", \"a\".\"RoleId\"
+FROM \"AspNetUserRoles\" AS \"a\"
+WHERE \"a\".\"UserId\" = @__p_0 AND \"a\".\"RoleId\" = @__p_1
+LIMIT 1" (0723d8ff)
+2024-03-21T17:03:08.6685234+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedRoleName_0
+LIMIT 2" (0723d8ff)
+2024-03-21T17:03:08.7678157+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedUserName\" = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2024-03-21T17:03:08.9054727+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Int64), @p1='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUserRoles\" (\"RoleId\", \"UserId\")
+VALUES (@p0, @p1);" (0723d8ff)
+2024-03-21T17:03:08.9190801+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@p16='?' (DbType = Int64), @p0='?' (DbType = Int32), @p1='?' (Size = 16), @p2='?' (Size = 36), @p17='?' (Size = 36), @p3='?' (Size = 15), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 4), @p8='?' (Size = 15), @p9='?' (Size = 15), @p10='?' (Size = 84), @p11='?', @p12='?' (DbType = Boolean), @p13='?' (Size = 32), @p14='?' (DbType = Boolean), @p15='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"AspNetUsers\" SET \"AccessFailedCount\" = @p0, \"Avatar\" = @p1, \"ConcurrencyStamp\" = @p2, \"Email\" = @p3, \"EmailConfirmed\" = @p4, \"LockoutEnabled\" = @p5, \"LockoutEnd\" = @p6, \"Name\" = @p7, \"NormalizedEmail\" = @p8, \"NormalizedUserName\" = @p9, \"PasswordHash\" = @p10, \"PhoneNumber\" = @p11, \"PhoneNumberConfirmed\" = @p12, \"SecurityStamp\" = @p13, \"TwoFactorEnabled\" = @p14, \"UserName\" = @p15
+WHERE \"Id\" = @p16 AND \"ConcurrencyStamp\" = @p17
+RETURNING 1;" (0723d8ff)
+2024-03-21T17:03:09.2196775+02:00 0HN29MV8E19N6:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a0\".\"Name\"
+FROM \"AspNetUserRoles\" AS \"a\"
+INNER JOIN \"AspNetRoles\" AS \"a0\" ON \"a\".\"RoleId\" = \"a0\".\"Id\"
+WHERE \"a\".\"UserId\" = @__userId_0" (0723d8ff)
+2024-03-21T17:05:01.7293071+02:00 0HN29MV8E19NA:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 13)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T17:05:47.6472905+02:00 0HN29MV8E19NB:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T17:05:47.6888670+02:00 0HN29MV8E19NB:00000002 [INF] login user (272bac74)
+2024-03-21T17:05:47.6953975+02:00 0HN29MV8E19NB:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T17:05:47.7210154+02:00 0HN29MV8E19NB:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a0\".\"Name\"
+FROM \"AspNetUserRoles\" AS \"a\"
+INNER JOIN \"AspNetRoles\" AS \"a0\" ON \"a\".\"RoleId\" = \"a0\".\"Id\"
+WHERE \"a\".\"UserId\" = @__userId_0" (0723d8ff)
+2024-03-21T17:07:11.1093920+02:00 0HN29MV8E19NF:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"" (0723d8ff)
+2024-03-21T17:07:27.5054939+02:00 0HN29MV8E19NG:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=["@__model_Id_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"Id\" = @__model_Id_0
+LIMIT 1" (0723d8ff)
+2024-03-21T17:07:27.6079384+02:00 0HN29MV8E19NG:00000002 [INF] Executed DbCommand ("69"ms) [Parameters=["@p0='?' (DbType = Int64), @p1='?' (Size = 36)"], CommandType='Text', CommandTimeout='30']"
+""DELETE FROM \"AspNetUsers\"
+WHERE \"Id\" = @p0 AND \"ConcurrencyStamp\" = @p1
+RETURNING 1;" (0723d8ff)
+2024-03-21T17:07:39.6625815+02:00 0HN29MV8E19NH:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"" (0723d8ff)
+2024-03-21T22:09:12.5908206+02:00  [INF] seeding database (240e1b55)
+2024-03-21T22:09:15.4473523+02:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-21T22:09:15.4589242+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-21T22:09:15.4910686+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-21T22:09:15.5333117+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-21T22:09:16.2670382+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-21T22:09:16.2747524+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-21T22:09:16.8116007+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-21T22:09:16.8117854+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-21T22:09:16.8128984+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-21T22:09:16.8130093+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-21T22:09:53.9250276+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("19"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T22:09:53.9695791+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedName_0
+LIMIT 1" (0723d8ff)
+2024-03-21T22:09:54.0843111+02:00 0HN29SB4L25BS:00000006 [WRN] Role null validation failed: "DuplicateRoleName". (60d773c7)
+2024-03-21T22:09:54.2110442+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedUserName\" = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2024-03-21T22:09:54.7392894+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("17"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 16), @p2='?' (Size = 36), @p3='?' (Size = 15), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 4), @p8='?' (Size = 15), @p9='?' (Size = 15), @p10='?' (Size = 84), @p11='?', @p12='?' (DbType = Boolean), @p13='?' (Size = 32), @p14='?' (DbType = Boolean), @p15='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUsers\" (\"AccessFailedCount\", \"Avatar\", \"ConcurrencyStamp\", \"Email\", \"EmailConfirmed\", \"LockoutEnabled\", \"LockoutEnd\", \"Name\", \"NormalizedEmail\", \"NormalizedUserName\", \"PasswordHash\", \"PhoneNumber\", \"PhoneNumberConfirmed\", \"SecurityStamp\", \"TwoFactorEnabled\", \"UserName\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15)
+RETURNING \"Id\";" (0723d8ff)
+2024-03-21T22:09:54.9127336+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedRoleName_0
+LIMIT 2" (0723d8ff)
+2024-03-21T22:09:54.9535392+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__p_0='?' (DbType = Int64), @__p_1='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"UserId\", \"a\".\"RoleId\"
+FROM \"AspNetUserRoles\" AS \"a\"
+WHERE \"a\".\"UserId\" = @__p_0 AND \"a\".\"RoleId\" = @__p_1
+LIMIT 1" (0723d8ff)
+2024-03-21T22:09:54.9619341+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"ConcurrencyStamp\", \"a\".\"Name\", \"a\".\"NormalizedName\"
+FROM \"AspNetRoles\" AS \"a\"
+WHERE \"a\".\"NormalizedName\" = @__normalizedRoleName_0
+LIMIT 2" (0723d8ff)
+2024-03-21T22:09:55.0313690+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedUserName\" = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2024-03-21T22:09:55.1015587+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Int64), @p1='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"AspNetUserRoles\" (\"RoleId\", \"UserId\")
+VALUES (@p0, @p1);" (0723d8ff)
+2024-03-21T22:09:55.1057960+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("1"ms) [Parameters=["@p16='?' (DbType = Int64), @p0='?' (DbType = Int32), @p1='?' (Size = 16), @p2='?' (Size = 36), @p17='?' (Size = 36), @p3='?' (Size = 15), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 4), @p8='?' (Size = 15), @p9='?' (Size = 15), @p10='?' (Size = 84), @p11='?', @p12='?' (DbType = Boolean), @p13='?' (Size = 32), @p14='?' (DbType = Boolean), @p15='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""UPDATE \"AspNetUsers\" SET \"AccessFailedCount\" = @p0, \"Avatar\" = @p1, \"ConcurrencyStamp\" = @p2, \"Email\" = @p3, \"EmailConfirmed\" = @p4, \"LockoutEnabled\" = @p5, \"LockoutEnd\" = @p6, \"Name\" = @p7, \"NormalizedEmail\" = @p8, \"NormalizedUserName\" = @p9, \"PasswordHash\" = @p10, \"PhoneNumber\" = @p11, \"PhoneNumberConfirmed\" = @p12, \"SecurityStamp\" = @p13, \"TwoFactorEnabled\" = @p14, \"UserName\" = @p15
+WHERE \"Id\" = @p16 AND \"ConcurrencyStamp\" = @p17
+RETURNING 1;" (0723d8ff)
+2024-03-21T22:09:55.2653128+02:00 0HN29SB4L25BS:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a0\".\"Name\"
+FROM \"AspNetUserRoles\" AS \"a\"
+INNER JOIN \"AspNetRoles\" AS \"a0\" ON \"a\".\"RoleId\" = \"a0\".\"Id\"
+WHERE \"a\".\"UserId\" = @__userId_0" (0723d8ff)
+2024-03-21T22:10:31.7970963+02:00 0HN29SB4L25BS:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"" (0723d8ff)
+2024-03-21T22:11:47.0405388+02:00 0HN29SB4L25BS:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=["@__model_Id_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"Id\" = @__model_Id_0
+LIMIT 1" (0723d8ff)
+2024-03-21T22:14:27.8560072+02:00 0HN29SB4L25BT:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"" (0723d8ff)
+2024-03-21T22:15:56.7861769+02:00  [INF] seeding database (240e1b55)
+2024-03-21T22:15:58.5449436+02:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-21T22:15:58.5557453+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-21T22:15:58.5756361+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-21T22:15:58.6171627+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-21T22:15:59.1758672+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-21T22:15:59.1991588+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-21T22:15:59.4033332+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-21T22:15:59.4035117+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-21T22:15:59.4045693+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-21T22:15:59.4046541+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-21T22:16:51.4634464+02:00 0HN29SESNDEMF:00000005 [INF] Executed DbCommand ("10"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T22:16:51.6279960+02:00 0HN29SESNDEMF:00000005 [INF] login user (272bac74)
+2024-03-21T22:16:51.6337647+02:00 0HN29SESNDEMF:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 15)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"NormalizedEmail\" = @__normalizedEmail_0
+LIMIT 2" (0723d8ff)
+2024-03-21T22:16:51.7610574+02:00 0HN29SESNDEMF:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a0\".\"Name\"
+FROM \"AspNetUserRoles\" AS \"a\"
+INNER JOIN \"AspNetRoles\" AS \"a0\" ON \"a\".\"RoleId\" = \"a0\".\"Id\"
+WHERE \"a\".\"UserId\" = @__userId_0" (0723d8ff)
+2024-03-21T22:17:15.8068804+02:00 0HN29SESNDEMF:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"" (0723d8ff)
+2024-03-21T22:17:33.4997326+02:00 0HN29SESNDEMF:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__model_Id_0='?' (DbType = Int64)"], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"
+WHERE \"a\".\"Id\" = @__model_Id_0
+LIMIT 1" (0723d8ff)
+2024-03-21T22:17:33.7555682+02:00 0HN29SESNDEMF:00000007 [INF] Executed DbCommand ("77"ms) [Parameters=["@p0='?' (DbType = Int64), @p1='?' (Size = 36)"], CommandType='Text', CommandTimeout='30']"
+""DELETE FROM \"AspNetUsers\"
+WHERE \"Id\" = @p0 AND \"ConcurrencyStamp\" = @p1
+RETURNING 1;" (0723d8ff)
+2024-03-21T22:17:44.6129442+02:00 0HN29SESNDEMF:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"a\".\"Id\", \"a\".\"AccessFailedCount\", \"a\".\"Avatar\", \"a\".\"ConcurrencyStamp\", \"a\".\"Email\", \"a\".\"EmailConfirmed\", \"a\".\"LockoutEnabled\", \"a\".\"LockoutEnd\", \"a\".\"Name\", \"a\".\"NormalizedEmail\", \"a\".\"NormalizedUserName\", \"a\".\"PasswordHash\", \"a\".\"PhoneNumber\", \"a\".\"PhoneNumberConfirmed\", \"a\".\"SecurityStamp\", \"a\".\"TwoFactorEnabled\", \"a\".\"UserName\"
+FROM \"AspNetUsers\" AS \"a\"" (0723d8ff)

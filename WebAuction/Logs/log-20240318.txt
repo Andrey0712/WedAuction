@@ -20,3 +20,25 @@ ORDER BY \"MigrationId\";" (0723d8ff)
 2024-03-18T11:57:16.2176571+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2024-03-18T11:57:16.2188089+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2024-03-18T11:57:16.2188999+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)
+2024-03-18T12:31:04.2627325+02:00  [INF] seeding database (240e1b55)
+2024-03-18T12:31:07.1877440+02:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-18T12:31:07.2056840+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"name\" = '__EFMigrationsHistory' AND \"type\" = 'table';" (0723d8ff)
+2024-03-18T12:31:07.2331580+02:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"MigrationId\", \"ProductVersion\"
+FROM \"__EFMigrationsHistory\"
+ORDER BY \"MigrationId\";" (0723d8ff)
+2024-03-18T12:31:07.2883970+02:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2024-03-18T12:31:08.0837030+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetRoles\" AS \"a\")" (0723d8ff)
+2024-03-18T12:31:08.0896433+02:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT EXISTS (
+    SELECT 1
+    FROM \"AspNetUsers\" AS \"a\")" (0723d8ff)
+2024-03-18T12:31:08.2935717+02:00  [INF] Now listening on: "http://localhost:5142" (d826f4b8)
+2024-03-18T12:31:08.2939760+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-03-18T12:31:08.2951506+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2024-03-18T12:31:08.2952269+02:00  [INF] Content root path: "D:\auction\WebAuction\WebAuction\" (b5d60022)

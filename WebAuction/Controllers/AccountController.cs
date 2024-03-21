@@ -107,6 +107,8 @@ namespace WebAuction.Controllers
 
         [HttpPost]
         [Microsoft.AspNetCore.Mvc.Route("register")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenViewModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Register([FromForm] RegisterViewModel model)
         {
             
@@ -223,7 +225,122 @@ var user = await _userManager.FindByEmailAsync(model.Email);
             
         }
 
+        /// <summary>
+        ///Видаленя юзера
+        /// </summary>
+        /// <param name="model">id users</param>
+        /// <returns>ok</returns>
+        /// <remarks>Awesomeness!</remarks>
+        /// <response code="200">Delete user</response>
+        /// <response code="400">Delete has missing/invalid values</response>
+        /// <response code="500">Oops! Can't Delete your user right now</response>
+        [HttpPost]
+        [Authorize]
+        [Microsoft.AspNetCore.Mvc.Route("delete")]
+        public IActionResult Delete([FromBody] UserDelModel model)
+        {
+            var res=_context.Users.FirstOrDefault(x=>x.Id == model.Id);
+            if(res==null)
+            {
+                return BadRequest(new { message = "Chek Id" });
+            }
+            _context.Remove(res);
+            _context.SaveChanges();
+            return Ok(new {messege="User delete"});
+
+
+        }
+
+        /// <summary>
+        /// Редагувння юзера
+        /// </summary>
+        /// <param name="model">Понель із даними</param>
+        /// <returns>Повертає токен авторизації</returns>
+        /// <remarks>Awesomeness!</remarks>
+        /// <response code="200">Update user</response>
+        /// <response code="400">Update has missing/invalid values</response>
+        /// <response code="500">Oops! Can't Update right now</response>
+
+        [Authorize]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenViewModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Microsoft.AspNetCore.Mvc.Route("edit")]
+
+        public IActionResult EditUser([FromBody]  EditUserModel model)
+        {
+            var user=_context.Users.FirstOrDefault(x=>x.Id==model.Id);
+            if(model==null) {
+                return BadRequest(new { messege = "empty array" });
+                    }
+            if (model.Name != null)
+            {
+                user.Name= model.Name;
+            }
+            if(model.Email != null)
+            {
+                user.Email= model.Email;
+            }
+
+            string fileName = string.Empty;
+
+            if (model.Avatar != null)
+            {
+
+
+                string img = Path.GetRandomFileName() +
+                    Path.GetExtension(model.Avatar.FileName);
+
+                string dirPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                fileName = Path.Combine(dirPath, img);
+                using (var file = System.IO.File.Create(fileName))
+                {
+                    model.Avatar.CopyTo(file);
+                }
+               
+
+
+                var oldImage = user.Avatar;
+
+
+
+                string fol = "\\uploads\\";
+                string contentRootPath = _host.ContentRootPath + fol + oldImage;
+
+                if (System.IO.File.Exists(contentRootPath))
+                {
+                    System.IO.File.Delete(contentRootPath);
+                }
+                user.Avatar = img;
+
+            }
+
+            /* string avatarNew = string.Empty;
+             if(model.Avatar != null)
+             {
+                 string foto=Path.GetRandomFileName()+Path.ChangeExtension(model.Avatar.FileName);
+                 string dirPath = Path.Combine(Dictionary.GetCurrentDirectory(), "uploads");
+                 avatarNew=Path.Combine(dirPath, foto);
+                 using(var file=System.IO.File.Create(avatarNew))
+                 {
+                     model.Avatar.CopyTo(file);
+                 }
+
+                 var oldAvatar=user.Avatar;
+                 string contentRootPath = _host.ContentRootPath + "\\uploads\\" + oldAvatar;
+                 if(System.IO.File.Exists(contentRootPath))
+                 {
+                     System.IO.File.Delete(contentRootPath);
+                 }
+                 user.Avatar = avatarNew;
+
+             }*/
+
+            _context.SaveChanges();
+            return Ok(new { token = _jwtTokenService.CreateToken(user) });
+            
+        }
 
     }
-    
+
 }
