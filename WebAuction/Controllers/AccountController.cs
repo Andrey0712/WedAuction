@@ -246,6 +246,18 @@ var user = await _userManager.FindByEmailAsync(model.Email);
             }
             _context.Remove(res);
             _context.SaveChanges();
+
+            var oldImage = res.Avatar;
+
+
+            //delete avatar
+            string folder = "\\uploads\\";
+            string contentRootPath = _host.ContentRootPath + folder + oldImage;
+
+            if (System.IO.File.Exists(contentRootPath))
+            {
+                System.IO.File.Delete(contentRootPath);
+            }
             return Ok(new {messege="User delete"});
 
 
@@ -267,7 +279,7 @@ var user = await _userManager.FindByEmailAsync(model.Email);
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Microsoft.AspNetCore.Mvc.Route("edit")]
 
-        public IActionResult EditUser([FromBody]  EditUserModel model)
+        public IActionResult EditUser([FromForm]  EditUserModel model)
         {
             var user=_context.Users.FirstOrDefault(x=>x.Id==model.Id);
             if(model==null) {
@@ -304,8 +316,8 @@ var user = await _userManager.FindByEmailAsync(model.Email);
 
 
 
-                string fol = "\\uploads\\";
-                string contentRootPath = _host.ContentRootPath + fol + oldImage;
+                string folder = "\\uploads\\";
+                string contentRootPath = _host.ContentRootPath + folder + oldImage;
 
                 if (System.IO.File.Exists(contentRootPath))
                 {

@@ -12,7 +12,7 @@
         /// <summary>
         /// Електронна пошта
         /// </summary>
-        /// <example>Email@gmail.com</example>
+        /// <example>Ira@gmail.com</example>
         public string Email { get; set; }
         /// <summary>
         /// Пароль
@@ -87,7 +87,7 @@
         /// <summary>
         /// Електронна пошта
         /// </summary>
-        /// <example>Email@gmail.com</example>
+        /// <example>Ira@gmail.com</example>
         public string? Email { get; set; }
        
         /// <summary>
