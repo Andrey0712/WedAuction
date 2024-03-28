@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Entities;
 using Data.Entities.Identity;
 using WebAuction.Models;
 
@@ -17,10 +18,13 @@ namespace WebAuction.Mapper
                 .ForMember(x=>x.Avatar, opt => opt.MapFrom(x=>$"/uploads/{x.Avatar}"))
                 .ForMember(x=>x.Name,opt=>opt.MapFrom(x=>x.Name))
                 .ForMember(x=>x.Email,opt=>opt.MapFrom(x=>x.Email));
-        
+
+            //maper for category
+            CreateMap<CreateCategoryViewModel, CategoryEntity>();
+            CreateMap<CategoryEntity,ItemCategoryViewModel>();
         }
 
-
+        
         
     }
 }
